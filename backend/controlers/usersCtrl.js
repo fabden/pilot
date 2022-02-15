@@ -13,24 +13,42 @@ exports.userUpdate =(req,res)=>{
 }
 
 //post user
-exports.userPost =(req,res)=>{    
+exports.userPost =(req,res)=>{  
+    
+    const datas = [{
+        nom: "nom joueur 1",
+        prenom: "prenom jouer 1",
+        vie: "50",
+        force: "41",
+        agilite: "2",
+        },
+        {
+        nom: "nom jouer 2",
+        prenom: "prenom jouer 2",
+        vie: "4",
+        force: "74",
+        agilite: "3",
+        },
+        {
+        nom: "nom jouer 3",
+        prenom: "prenom jouer 3",
+        vie: "30",
+        force: "65",
+        agilite: "80",
+        },
+        {
+        nom: "nom jouer 4",
+        prenom: "prenom jouer 4",
+        vie: "12",
+        force: "21",
+        agilite: "32",
+        }]
 
-  const newUserModel = new userModel({
-    nom: "{ type: String, required: true }",
-    prenom: "{ type: String, required: true }",
-    vie: "{ type: String, required: true }",
-    force: "{ type: String, required: true }",
-    agilite: "{ type: String, required: true }",
-    });
+        datas.map((e)=>{e        
+            const newUserModel = new userModel(e);            
+            newUserModel.save();}
+   )
 
-    newUserModel.save()
-    .then(()=>{
-        res.status(201).json({posqt:"user creer"})
-    })
-    .catch((error) => {
-        res.status(500).json({ message: error });
-      });
-
-
+    res.status(201).json({base:"ok"})
    
 }
