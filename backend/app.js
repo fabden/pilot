@@ -1,6 +1,7 @@
 // Imports
 const express = require("express");
 const app = express();
+const mongoose = require('mongoose');
 
 // Analyse les corps de requête entrants dans le middleware
 app.use(express.urlencoded({ extended: true }));
@@ -12,6 +13,15 @@ app.use(express.json());
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
     next();
   });
+
+  // connection to DataBase
+mongoose.connect(`mongodb://localhost:27017/pilot`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
+
 
 // routes
 app.use("/", (req,res)=>{ res.status(200).json({dddd:'ee'})});
