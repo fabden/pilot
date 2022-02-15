@@ -4,9 +4,9 @@ const userModel = require('../models/usersModel')
 
 
 // find all users
-exports.usersGetAll = (req,res)=>{ 
+exports.usersGetAll = async (req,res)=>{ 
 
-    userModel.find()
+ await   userModel.find()
     .then((datas)=>{
         res.status(200).json(datas)
     })
@@ -20,10 +20,8 @@ exports.usersGetAll = (req,res)=>{
 
 
 //update user
-exports.userUpdate =(req,res)=>{    
-
-console.log(req.params.user)    
-    userModel.findByIdAndUpdate(req.params.user,req.body,{new: true})
+exports.userUpdate =(req,res)=>{  
+  userModel.findByIdAndUpdate(req.params.user,req.body,{new: true})
     .then((doc)=>{res.status(200).json(doc)})
 }
 
@@ -61,7 +59,7 @@ exports.userPost =(req,res)=>{
 
         datas.map((e)=>{e        
             const newUserModel = new userModel(e);            
-            newUserModel.save();}
+      newUserModel.save();}
    )
 
     res.status(201).json({base:"ok"})

@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const usersRoutes = require('./routes/usersRoutes')
+const combatRoutes = require('./routes/combatRoutes')
 const mongoose = require('mongoose');
 
 // Analyse les corps de requête entrants dans le middleware
@@ -10,8 +11,8 @@ app.use(express.json());
 
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
+    res.setHeader('Access-Control-Allow-Headers', 'Content');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH');
     next();
   });
 
@@ -26,7 +27,7 @@ mongoose.connect(`mongodb://localhost:27017/pilot`, {
 
 // routes
 app.use("/users", usersRoutes);
-app.use("/combat",(req,res)=>{ res.status(200).json({dddd:'combat'})})
+app.use("/combat",combatRoutes)
 
 // export
 module.exports = app;
