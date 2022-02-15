@@ -5,8 +5,8 @@ import ListeJoueur from './Compoment/ListesJoueur';
 function App() {
   return (
     <div className="App">
-      <ListeJoueur></ListeJoueur>
       <Combat></Combat>
+      <ListeJoueur></ListeJoueur>      
     </div>
   );
 }
