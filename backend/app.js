@@ -1,6 +1,7 @@
 // Imports
 const express = require("express");
 const app = express();
+const usersRoute = require('./routes/users')
 const mongoose = require('mongoose');
 
 // Analyse les corps de requête entrants dans le middleware
@@ -24,8 +25,8 @@ mongoose.connect(`mongodb://localhost:27017/pilot`, {
 
 
 // routes
-app.use("/", (req,res)=>{ res.status(200).json({dddd:'ee'})});
-
+app.use("/users", usersRoute);
+app.use("/combat",(req,res)=>{ res.status(200).json({dddd:'combat'})})
 
 // export
 module.exports = app;
