@@ -21,7 +21,10 @@ exports.usersGetAll = (req,res)=>{
 
 //update user
 exports.userUpdate =(req,res)=>{    
-    res.status(200).json({controleur:req.params.user})
+
+console.log(req.params.user)    
+    userModel.findByIdAndUpdate(req.params.user,req.body,{new: true})
+    .then((doc)=>{res.status(200).json(doc)})
 }
 
 //post user
