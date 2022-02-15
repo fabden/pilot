@@ -4,7 +4,19 @@ const userModel = require('../models/usersModel')
 
 
 // find all users
-exports.usersGetAll = (req,res)=>{ res.status(200).json({controleur:'users'})}
+exports.usersGetAll = (req,res)=>{ 
+
+    userModel.find()
+    .then((datas)=>{
+        res.status(200).json(datas)
+    })
+    .catch((err) => {
+        res.status(500).json({
+          error: err.message,
+        });
+     })
+
+}
 
 
 //update user
