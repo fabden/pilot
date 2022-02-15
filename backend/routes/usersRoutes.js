@@ -1,9 +1,11 @@
 // Imports
 const express = require("express");
+const UsersCtrl = require('../controlers/usersCtrl')
+
 
 const users = express.Router();
 
 users.route("/all")
-  .get((req,res)=>{ res.status(200).json({dddd:'users'})});
+  .get(UsersCtrl.users_get_all);
 
 module.exports = users;
