@@ -5,7 +5,7 @@ const usersCtrl = require('../controlers/usersCtrl')
 
 const users = express.Router();
 
-users.route("/get/all")
-  .get(usersCtrl.usersGetAll);
+users.get("/get/all",usersCtrl.usersGetAll);
+users.patch("/update/:user",usersCtrl.userUpdate);
 
 module.exports = users;
