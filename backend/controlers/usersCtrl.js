@@ -21,6 +21,7 @@ exports.usersGetAll = async (req,res)=>{
 
 //update user
 exports.userUpdate =(req,res)=>{  
+  console.log(req.body)
   userModel.findByIdAndUpdate(req.params.user,req.body,{new: true})
     .then((doc)=>{res.status(200).json(doc)})
 }
