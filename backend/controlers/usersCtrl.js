@@ -30,42 +30,42 @@ exports.userUpdate =(req,res)=>{
 exports.userPost =(req,res)=>{  
     
     const datas = [{
-        pseudo: "nom joueur 1",
+        pseudo: "Nom joueur 1",
         vie: "50",
         force: "41",
         },
         {
-        pseudo: "nom jouer 2",      
+        pseudo: "Nom joueur 2",      
         vie: "4",
         force: "74",
         },
         {
-        pseudo: "nom jouer 3",
+        pseudo: "Nom joueur 3",
         vie: "30",
         force: "65",
         },
         {
-        pseudo: "nom jouer 4",
+        pseudo: "Nom joueur 4",
         vie: "12",
         force: "21",
         },
         {
-          pseudo: "nom joueur 1",
+          pseudo: "Nom joueur 5",
           vie: "50",
           force: "41",
           },
           {
-          pseudo: "nom jouer 2",      
+          pseudo: "Nom joueur 6",      
           vie: "4",
           force: "74",
           },
           {
-          pseudo: "nom jouer 3",
+          pseudo: "Nom joueur 7",
           vie: "30",
           force: "65",
           },
           {
-          pseudo: "nom jouer 4",
+          pseudo: "Nom joueur 8",
           vie: "12",
           force: "21",
           }]
