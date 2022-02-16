@@ -58,24 +58,24 @@ function Combat({datas}) {
        
           <Grid item xs container >
               <Grid container justifyContent="center" item xs sx={{ border:'solid 1px blue',margin:'2px',padding:'10px',borderRadius:'5px'}}>            
-                <Grid xs={12}>
+                <Grid xs={12} item>
                 <Typography>Groupe 1</Typography> 
                 </Grid>
 
                { groupes1.map((data1)=> (               
-                <Grid xs={11} container item direction="column"  justifyContent="center" sx={{ border:'solid 1px blue',margin:'2px',borderRadius:'5px',height:'70px'}}>
+                <Grid xs={11} key ={data1._id} container item direction="column"  justifyContent="center" sx={{ border:'solid 1px blue',margin:'2px',borderRadius:'5px',height:'70px'}}>
                 <Typography>{data1.pseudo}</Typography>
                 </Grid>))}
 
               </Grid>  
 
             <Grid container justifyContent="center" item xs sx={{ border:'solid 1px blue',margin:'2px',padding:'10px',borderRadius:'5px'}}>
-            <Grid xs={12}>
+            <Grid xs={12} item>
                 <Typography>Groupe 2</Typography> 
                 </Grid>
 
                 { groupes2.map((data2)=> (               
-                <Grid xs={11} container item direction="column"  justifyContent="center" sx={{ border:'solid 1px blue',margin:'2px',borderRadius:'5px',height:'70px'}}>
+                <Grid  key ={data2._id}  xs={11} container item direction="column"  justifyContent="center" sx={{ border:'solid 1px blue',margin:'2px',borderRadius:'5px',height:'70px'}}>
                 <Typography>{data2.pseudo}</Typography>
                 </Grid>))}
 
