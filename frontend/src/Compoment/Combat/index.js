@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Combat() {
+function Combat({datas}) {
   return (
     <div>Combat</div>
   )
