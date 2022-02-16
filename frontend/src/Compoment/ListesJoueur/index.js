@@ -12,12 +12,7 @@ import { Button, Container } from '@mui/material';
 
 function ListeJoueur() {
 
-const [datas, setDatas] = useState([{
-  pseudo: "",
-  vie: 0,
-  force: 0,
-  agilite: 0,
-  }]);
+const [datas, setDatas] = useState([]);
 
 const updateUser = (event,user,indexc)=>{ 
     const newData = [...datas]
@@ -58,10 +53,10 @@ useEffect(getAllUser,[]);
     <>
     <Container >
     <Grid container justifyContent="space-around" >
-    {datas.map((a,index)=><Card sx={{ maxWidth: 260, border:'solid 1px black',margin:'5px'}}>
+    {datas.map((a,index)=><Card sx={{ maxWidth: 260, border:'solid 1px blue',margin:'5px'}}>
         <CardMedia
           component="img"
-          height="140"
+          height="100"
           image="/static/images/cards/contemplative-reptile.jpg"
           alt="green iguana"
         />
@@ -69,8 +64,7 @@ useEffect(getAllUser,[]);
           <Typography >Joueur {index+1}</Typography>
         <TextField
           name='pseudo'
-          aria-label="pseudo"
-          defaultValue="Default Value"          
+          aria-label="pseudo"        
           variant="standard"
           value={a.pseudo}
           sx={{ margin:'25px'}}
