@@ -1,7 +1,7 @@
 // Imports
 const Usermodel = require('../models/usersModel');
 
-// find all users
+// Find all users
 exports.usersGetAll = async (req, res) => {
   await Usermodel.find()
     .then((datas) => {
@@ -14,13 +14,13 @@ exports.usersGetAll = async (req, res) => {
     });
 };
 
-// update user
+// Update user
 exports.userUpdate = (req, res) => {
   Usermodel.findByIdAndUpdate(req.params.user, req.body, { new: true })
     .then((doc) => { res.status(200).json(doc); });
 };
 
-// post user
+// Post user
 exports.userPost = (req, res) => {
   const datas = [{
     pseudo: 'Nom joueur 1',

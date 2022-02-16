@@ -1,6 +1,7 @@
 // import
 const mongoose = require('mongoose');
 
+// model User de mondb
 const userSchema = mongoose.Schema({
   pseudo: { type: String, required: true },
   vie: { type: String, required: true },

@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// connection to DataBase
+// Connection data base
 mongoose.connect('mongodb://localhost:27017/pilot', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -25,7 +25,7 @@ mongoose.connect('mongodb://localhost:27017/pilot', {
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-// routes
+// routes User
 app.use('/users', usersRoutes);
 
 // export
