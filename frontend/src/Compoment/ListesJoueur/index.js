@@ -8,7 +8,7 @@ import Slider from '@mui/material/Slider';
 import Grid from '@mui/material/Grid';
 
 import axios from 'axios'
-import { Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
 
 function ListeJoueur() {
 
@@ -19,20 +19,31 @@ const [datas, setDatas] = useState([{
   agilite: 0,
   }]);
 
-console.log(datas)
-
 const updateUser = (event,user,indexc)=>{ 
     const newData = [...datas]
-    newData[indexc] = {...user,[event.currentTarget.name]:event.currentTarget.value}
-    setDatas(newData)  
+    newData[indexc] = {...user,[event.currentTarget.name]:event.currentTarget.value,sauv:false}
+    setDatas(newData)   
 }
 
 const upadteslider = (event, newValue, name, user,indesx) => {
     const newData = [...datas]
-    console.log(newData[indesx])
-    newData[indesx] = {...user,[name]:newValue}
+    newData[indesx] = {...user,[name]:newValue,sauv:false}
     setDatas(newData) 
+}
 
+const sauvegardeData = (user)=>{
+  axios.patch(`http://localhost:8080/users/update/${user._id}`,user)
+  .then((doc)=>{console.log(doc.data._id)  
+  const newdatas =  datas.map(docd=>{
+      if(docd._id === doc.data._id){
+      return {...docd,sauv:undefined}
+      }
+      return docd
+    })
+    console.log(newdatas);
+    setDatas(newdatas)
+  
+  })
 }
 
 const getAllUser = ()=>{axios.get('http://localhost:8080/users/get/all')
@@ -95,6 +106,7 @@ useEffect(getAllUser,[]);
             {a.agilite} 
             </Grid>
           </Grid>
+          { (typeof a.sauv !== "undefined" || a.sauv === false)?(<Button onClick={()=>{sauvegardeData(a)}}> Sauvegarde </Button>):(null)}
         </CardContent> 
     </Card>)}
     </Grid>
