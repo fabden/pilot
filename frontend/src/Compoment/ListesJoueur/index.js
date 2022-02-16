@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Slider from '@mui/material/Slider';
 import Grid from '@mui/material/Grid';
-import { Button, Container } from '@mui/material';
+import { Box, Button, Container, Divider } from '@mui/material';
 
 function ListeJoueur({datas,updateUser,upadteslider,sauvegardeData}) {
 
@@ -12,6 +12,7 @@ function ListeJoueur({datas,updateUser,upadteslider,sauvegardeData}) {
   return (
     <>
     <Container >
+    <Divider variant="middle" sx={{ margin:'5px'}} />
       <Typography>Joueurs</Typography>
     <Grid container justifyContent="space-around" >
     {datas.map((a,index)=><Card sx={{ maxWidth: 200, border:'solid 1px blue',margin:'5px'}} key={a._id}>
@@ -45,7 +46,7 @@ function ListeJoueur({datas,updateUser,upadteslider,sauvegardeData}) {
            {a.vie}
             </Grid>
           </Grid>
-          { (typeof a.sauv !== "undefined" || a.sauv === false)?(<Button onClick={()=>{sauvegardeData(a)}}> Sauvegarde </Button>):(null)}
+          { (typeof a.sauv !== "undefined" || a.sauv === false)?(<Button onClick={()=>{sauvegardeData(a)}}> Sauvegarde </Button>):(<Box sx={{height:'40px'}}></Box>)}
         </CardContent> 
     </Card>)}
     </Grid>

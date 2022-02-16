@@ -10,8 +10,6 @@ function App() {
 
 const [datas, setDatas] = useState([]);
 
-
-
 const updateUser = (event,user,indexc)=>{ 
     const newData = [...datas]
     newData[indexc] = {...user,[event.currentTarget.name]:event.currentTarget.value,sauv:false}
@@ -48,7 +46,7 @@ useEffect(getAllUser,[]);
 
   return (
     <div className="App">
-      <Combat datas={datas} ></Combat>
+      <Combat datas={datas} ></Combat>      
       <ListeJoueur datas={datas} updateUser={updateUser} upadteslider={upadteslider} sauvegardeData={sauvegardeData}></ListeJoueur>      
     </div>
   );

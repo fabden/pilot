@@ -20,13 +20,33 @@ function Combat({datas}) {
      }
     } 
     while (groupe1.length < 4)
-    groupe2 = datas.filter(data=> !groupe1.includes(data))
-    console.log("groupe2",groupe2)
-    console.log("groupe1",groupe1)
-    setGroupes1(groupe1);
-    setGroupes2(groupe2);
 
- 
+    do {
+      var rand2 = datas[Math.floor(Math.random() * datas.length)];   
+       if(!groupe2.includes(rand2) && !groupe1.includes(rand2)){
+         groupe2.push(rand2) 
+       }
+      } 
+      while (groupe2.length < 4 )
+
+      setGroupes1(groupe1)
+      setGroupes2(groupe2)
+
+
+  const totaleVieGroupe1 = groupe1.reduce((accumulator, currentValue) => {
+      return accumulator + Number(currentValue.vie)
+  }, 0)
+  
+  const totaleforceGroupe2 = groupe2.reduce((accumulator, currentValue) => {
+    return accumulator + Number(currentValue.force)
+  }, 0)
+  
+  if(totaleVieGroupe1-totaleforceGroupe2 < 0){
+    setResultat(`Groupe 2 Gagnant avec ${Math.abs(totaleVieGroupe1-totaleforceGroupe2)} points`)
+  } else{
+    setResultat(`Groupe 1 Gagnant avec ${totaleVieGroupe1-totaleforceGroupe2} points`)
+  }
+
 
  
   }
@@ -68,8 +88,8 @@ function Combat({datas}) {
           <Grid item container direction="column" justifyContent="space-around" alignItems="center" sx={{height:'45%'}}>
             <Button onClick={()=>combat()} variant="contained" sx={{width:'45%'}}>Affront</Button>
           </Grid>
-          <Grid  item sx={{ border:'solid 1px blue',height:'45%',borderRadius:'5px',margin:'5px'}}>
-            Resultat
+          <Grid container direction="column" alignItems="center" justifyContent="center" item sx={{ border:'solid 1px blue',height:'45%',borderRadius:'5px',margin:'5px'}}>
+           <Typography>{resultat}</Typography> 
           </Grid>
         </Grid>
       </Grid>

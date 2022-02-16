@@ -48,7 +48,27 @@ exports.userPost =(req,res)=>{
         pseudo: "nom jouer 4",
         vie: "12",
         force: "21",
-        }]
+        },
+        {
+          pseudo: "nom joueur 1",
+          vie: "50",
+          force: "41",
+          },
+          {
+          pseudo: "nom jouer 2",      
+          vie: "4",
+          force: "74",
+          },
+          {
+          pseudo: "nom jouer 3",
+          vie: "30",
+          force: "65",
+          },
+          {
+          pseudo: "nom jouer 4",
+          vie: "12",
+          force: "21",
+          }]
 
         datas.map((e)=>{e        
             const newUserModel = new userModel(e);            
