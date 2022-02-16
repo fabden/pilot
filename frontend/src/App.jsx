@@ -6,8 +6,9 @@ import Combat from './Compoment/Combat';
 import ListeJoueur from './Compoment/ListesJoueur';
 
 function App() {
+// state pour recuper les data du serveur
   const [datas, setDatas] = useState([]);
-
+  // fonction de mise jour d'un utilisateur dans le state
   const updateUser = (event, user, indexc) => {
     const newData = [...datas];
     newData[indexc] = {
@@ -17,13 +18,13 @@ function App() {
     };
     setDatas(newData);
   };
-
+  // fonction de mise a jour du slider dans le state
   const upadteslider = (event, newValue, name, user, indesx) => {
     const newData = [...datas];
     newData[indesx] = { ...user, [name]: newValue, sauv: false };
     setDatas(newData);
   };
-
+  // fonction de sauvegarde de donnee sur le serveur
   const sauvegardeData = (user) => {
     axios.patch(`http://localhost:8080/users/update/${user._id}`, user)
       .then((doc) => {
@@ -37,13 +38,14 @@ function App() {
         setDatas(newdatas);
       });
   };
-
+  // fonction appel a l'api pour recupere les datas
   const getAllUser = () => {
     axios.get('http://localhost:8080/users/get/all')
       .then((resp) => {
         setDatas(resp.data);
       });
   };
+  // declenchement de l'appel a l'api
   useEffect(getAllUser, []);
 
   return (

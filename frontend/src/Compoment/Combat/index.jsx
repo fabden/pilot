@@ -6,14 +6,17 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function Combat({ datas }) {
+  // state pour l'affichage des datas dans combat
   const [resultat, setResultat] = useState('');
   const [groupes1, setGroupes1] = useState([]);
   const [groupes2, setGroupes2] = useState([]);
-
+  /* fonction cree deux groupes de combat et renvoi les resultats
+   dans les state groupe1, groupe2, resultat */
   const combat = () => {
+    // declaratin des variabless
     const groupe1 = [];
     const groupe2 = [];
-
+    // construction du groupe1
     do {
       const rand = datas[Math.floor(Math.random() * datas.length)];
       if (!groupe1.includes(rand)) {
@@ -21,7 +24,7 @@ function Combat({ datas }) {
       }
     }
     while (groupe1.length < 4);
-
+    // construction du groupe2
     do {
       const rand2 = datas[Math.floor(Math.random() * datas.length)];
       if (!groupe2.includes(rand2) && !groupe1.includes(rand2)) {
@@ -29,10 +32,10 @@ function Combat({ datas }) {
       }
     }
     while (groupe2.length < 4);
-
+    // enregistrement des donnees dans les state
     setGroupes1(groupe1);
     setGroupes2(groupe2);
-
+    // Calcule du gagnant/perdant et enregistre le resultat dans stat resultat
     const totaleVieGroupe1 = groupe1
       .reduce((accumulator, currentValue) => accumulator + Number(currentValue.vie), 0);
 
