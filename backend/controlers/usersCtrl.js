@@ -33,25 +33,21 @@ exports.userPost =(req,res)=>{
         pseudo: "nom joueur 1",
         vie: "50",
         force: "41",
-        agilite: "2",
         },
         {
         pseudo: "nom jouer 2",      
         vie: "4",
         force: "74",
-        agilite: "3",
         },
         {
         pseudo: "nom jouer 3",
         vie: "30",
         force: "65",
-        agilite: "80",
         },
         {
         pseudo: "nom jouer 4",
         vie: "12",
         force: "21",
-        agilite: "32",
         }]
 
         datas.map((e)=>{e        

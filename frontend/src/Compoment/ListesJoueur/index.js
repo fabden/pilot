@@ -45,16 +45,6 @@ function ListeJoueur({datas,updateUser,upadteslider,sauvegardeData}) {
            {a.vie}
             </Grid>
           </Grid>
-
-          <Grid container spacing={2} alignItems="center" justifyContent="center">
-            <Grid item xs > 
-            Agilité
-                <Slider onChange={(event,newValeur)=>upadteslider(event,newValeur,'agilite',a,index)} name='agilite' size="small" value={Number(a.agilite)}  aria-label="agilité"/>
-            </Grid>
-            <Grid item >
-            {a.agilite} 
-            </Grid>
-          </Grid>
           { (typeof a.sauv !== "undefined" || a.sauv === false)?(<Button onClick={()=>{sauvegardeData(a)}}> Sauvegarde </Button>):(null)}
         </CardContent> 
     </Card>)}
