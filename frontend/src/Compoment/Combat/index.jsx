@@ -139,5 +139,5 @@ function Combat({ datas }) {
 export default Combat;
 
 Combat.propTypes = {
-  datas: PropTypes.arrayOf.isRequired,
+  datas: PropTypes.func.isRequired,
 };
