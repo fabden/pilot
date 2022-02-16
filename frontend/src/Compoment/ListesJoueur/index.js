@@ -19,48 +19,28 @@ const [datas, setDatas] = useState([{
   agilite: 0,
   }]);
 
+console.log(datas)
+
+const updateUser = (event,user,indexc)=>{ 
+    const newData = [...datas]
+    newData[indexc] = {...user,[event.currentTarget.name]:event.currentTarget.value}
+    setDatas(newData)  
+}
+
+const upadteslider = (event, newValue, name, user,indesx) => {
+    const newData = [...datas]
+    console.log(newData[indesx])
+    newData[indesx] = {...user,[name]:newValue}
+    setDatas(newData) 
+
+}
+
 const getAllUser = ()=>{axios.get('http://localhost:8080/users/get/all')
 .then((resp)=>{
   setDatas(resp.data)
 })}
 
-const updateUser = (event,user)=>{ 
-const newDatas =  datas.map((data)=>{
-    if(data._id === user._id) { 
-      axios.patch(`http://localhost:8080/users/update/${user._id}`, user)
-      .then((resp)=>{
-        console.log("user modifier",user)
-      })
-      .catch((err)=>console.log(err))
-      return {...user,[event.currentTarget.name]:event.currentTarget.value}
-      }
-      return data
-    })
-    setDatas(newDatas) 
-}
-
-const upadteslider = (event, newValue, name,user) => {
-
- const newDatas =  datas.map((data)=>{    
-
-    if(data._id === user._id) { 
-      axios.patch(`http://localhost:8080/users/update/${user._id}`, user)
-      .then((resp)=>{
-        console.log("user modifier",user)
-      })
-      .catch((err)=>console.log(err))
-      return {...user,[name]:newValue}
-      }
-      return data
-    }) 
-
-    setDatas(newDatas) 
-}
-
-
-
 useEffect(getAllUser,[]);
-
 
 
   return (
@@ -83,13 +63,13 @@ useEffect(getAllUser,[]);
           variant="standard"
           value={a.pseudo}
           sx={{ margin:'25px'}}
-          onChange={(e)=>updateUser(e,a)}
+          onChange={(event)=>updateUser(event,a,index)}
         />
 
           <Grid container spacing={2} alignItems="center" justifyContent="center"  >
             <Grid item xs > 
             Force
-                <Slider onChange={(event,newValeur)=>upadteslider(event,newValeur,'force',a)} name='force' size="small" value={Number(a.force)} aria-label="force"/>
+                <Slider onChange={(event,newValeur)=>upadteslider(event,newValeur,'force',a,index)} name='force' size="small" value={Number(a.force)} aria-label="force"/>
             </Grid>
             <Grid item >
             {a.force}
@@ -99,7 +79,7 @@ useEffect(getAllUser,[]);
           <Grid container spacing={2} alignItems="center" justifyContent="center">
             <Grid item xs > 
             Vie
-                <Slider onChange={(event,newValeur)=>upadteslider(event,newValeur,'vie',a)} name='vie' size="small" value={Number(a.vie)} aria-label="vie"/>
+                <Slider onChange={(event,newValeur)=>upadteslider(event,newValeur,'vie',a,index)} name='vie' size="small" value={Number(a.vie)} aria-label="vie"/>
             </Grid>
             <Grid item >
            {a.vie}
@@ -109,7 +89,7 @@ useEffect(getAllUser,[]);
           <Grid container spacing={2} alignItems="center" justifyContent="center">
             <Grid item xs > 
             Agilité
-                <Slider onChange={(event,newValeur)=>upadteslider(event,newValeur,'agilite',a)} name='agilite' size="small" value={Number(a.agilite)}  aria-label="agilité"/>
+                <Slider onChange={(event,newValeur)=>upadteslider(event,newValeur,'agilite',a,index)} name='agilite' size="small" value={Number(a.agilite)}  aria-label="agilité"/>
             </Grid>
             <Grid item >
             {a.agilite} 
