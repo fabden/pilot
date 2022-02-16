@@ -51,8 +51,16 @@ function Combat({ datas }) {
 
   return (
     <Container>
-      <Grid container sx={{ height: '400px' }}>
+      <Typography
+        variant="h3"
+        sx={{
+          margin: '10px',
+        }}
+      >
+        Projet pilot
 
+      </Typography>
+      <Grid container sx={{ height: '400px' }}>
         <Grid item xs container>
           <Grid
             container
