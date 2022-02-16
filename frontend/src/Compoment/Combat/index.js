@@ -40,7 +40,7 @@ function Combat({datas}) {
   const totaleforceGroupe2 = groupe2.reduce((accumulator, currentValue) => {
     return accumulator + Number(currentValue.force)
   }, 0)
-  
+  console.log(totaleVieGroupe1-totaleforceGroupe2)
   if(totaleVieGroupe1-totaleforceGroupe2 < 0){
     setResultat(`Groupe 2 Gagnant avec ${Math.abs(totaleVieGroupe1-totaleforceGroupe2)} points`)
   } else{
@@ -59,7 +59,7 @@ function Combat({datas}) {
           <Grid item xs container >
               <Grid container justifyContent="center" item xs sx={{ border:'solid 1px blue',margin:'2px',padding:'10px',borderRadius:'5px'}}>            
                 <Grid xs={12} item>
-                <Typography>Groupe 1</Typography> 
+                <Typography variant='h4'>Groupe 1</Typography> 
                 </Grid>
 
                { groupes1.map((data1)=> (               
@@ -71,7 +71,7 @@ function Combat({datas}) {
 
             <Grid container justifyContent="center" item xs sx={{ border:'solid 1px blue',margin:'2px',padding:'10px',borderRadius:'5px'}}>
             <Grid xs={12} item>
-                <Typography>Groupe 2</Typography> 
+                <Typography variant='h4'>Groupe 2</Typography> 
                 </Grid>
 
                 { groupes2.map((data2)=> (               
@@ -89,7 +89,7 @@ function Combat({datas}) {
             <Button onClick={()=>combat()} variant="contained" sx={{width:'45%'}}>Affront</Button>
           </Grid>
           <Grid container direction="column" alignItems="center" justifyContent="center" item sx={{ border:'solid 1px blue',height:'45%',borderRadius:'5px',margin:'5px'}}>
-           <Typography>{resultat}</Typography> 
+           <Typography variant='h5'>{resultat}</Typography> 
           </Grid>
         </Grid>
       </Grid>

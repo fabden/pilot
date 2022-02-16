@@ -13,7 +13,7 @@ function ListeJoueur({datas,updateUser,upadteslider,sauvegardeData}) {
     <>
     <Container >
     <Divider variant="middle" sx={{ margin:'5px'}} />
-      <Typography>Joueurs</Typography>
+      <Typography variant='h4'>Listes Joueurs</Typography>
     <Grid container justifyContent="space-around" >
     {datas.map((a,index)=><Card sx={{ maxWidth: 200, border:'solid 1px blue',margin:'5px'}} key={a._id}>
         <CardContent>
@@ -26,7 +26,6 @@ function ListeJoueur({datas,updateUser,upadteslider,sauvegardeData}) {
           sx={{ margin:'25px'}}
           onChange={(event)=>updateUser(event,a,index)}
         />
-
           <Grid container spacing={2} alignItems="center" justifyContent="center"  >
             <Grid item xs > 
             Force
