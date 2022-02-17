@@ -1,0 +1,22 @@
+version: "3.9"  
+
+services:
+  back:
+    build: ./backend  
+    container_name: back
+    hostname: back
+    ports:
+      - "8080:8080"
+
+  mongo:
+    build: ./srvmongo
+
+    container_name: mongo
+    hostname: mongo
+  front:
+    build: ./frontend
+    container_name: front
+    hostname: front
+    ports:
+      - "80:80"
+
