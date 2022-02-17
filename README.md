@@ -12,5 +12,5 @@
 
     http:localhost
     
- les ports 80 et 8080 doivent etre disponible sur votre machin, redemmarer les container pour reinisialisé la base mongodb. 
+ les ports 80 et 8080 doivent etre disponible sur votre machine, redémarrer les container pour réinitialiser la base mongodb.
  
