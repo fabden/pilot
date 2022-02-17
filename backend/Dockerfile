@@ -8,7 +8,6 @@ COPY package*.json ./
 
 RUN npm install
 
-
 # copie tout les fichier du repertoire courant 
 COPY . .
 #ouverture du port 8080
