@@ -16,36 +16,39 @@ function Combat({ datas }) {
     // declaratin des variabless
     const groupe1 = [];
     const groupe2 = [];
+
     // construction du groupe1
-    do {
-      const rand = datas[Math.floor(Math.random() * datas.length)];
-      if (!groupe1.includes(rand)) {
-        groupe1.push(rand);
+    if (datas !== undefined) {
+      do {
+        const rand = datas[Math.floor(Math.random() * datas.length)];
+        if (!groupe1.includes(rand)) {
+          groupe1.push(rand);
+        }
       }
-    }
-    while (groupe1.length < 4);
-    // construction du groupe2
-    do {
-      const rand2 = datas[Math.floor(Math.random() * datas.length)];
-      if (!groupe2.includes(rand2) && !groupe1.includes(rand2)) {
-        groupe2.push(rand2);
+      while (groupe1.length < 4);
+      // construction du groupe2
+      do {
+        const rand2 = datas[Math.floor(Math.random() * datas.length)];
+        if (!groupe2.includes(rand2) && !groupe1.includes(rand2)) {
+          groupe2.push(rand2);
+        }
       }
-    }
-    while (groupe2.length < 4);
-    // enregistrement des donnees dans les state
-    setGroupes1(groupe1);
-    setGroupes2(groupe2);
-    // Calcule du gagnant/perdant et enregistre le resultat dans stat resultat
-    const totaleVieGroupe1 = groupe1
-      .reduce((accumulator, currentValue) => accumulator + Number(currentValue.vie), 0);
+      while (groupe2.length < 4);
+      // enregistrement des donnees dans les state
+      setGroupes1(groupe1);
+      setGroupes2(groupe2);
+      // Calcule du gagnant/perdant et enregistre le resultat dans stat resultat
+      const totaleVieGroupe1 = groupe1
+        .reduce((accumulator, currentValue) => accumulator + Number(currentValue.vie), 0);
 
-    const totaleforceGroupe2 = groupe2
-      .reduce((accumulator, currentValue) => accumulator + Number(currentValue.force), 0);
+      const totaleforceGroupe2 = groupe2
+        .reduce((accumulator, currentValue) => accumulator + Number(currentValue.force), 0);
 
-    if (totaleVieGroupe1 - totaleforceGroupe2 < 0) {
-      setResultat(`Groupe 2 Gagnant avec ${Math.abs(totaleVieGroupe1 - totaleforceGroupe2)} points`);
-    } else {
-      setResultat(`Groupe 1 Gagnant avec ${totaleVieGroupe1 - totaleforceGroupe2} points`);
+      if (totaleVieGroupe1 - totaleforceGroupe2 < 0) {
+        setResultat(`Groupe 2 Gagnant avec ${Math.abs(totaleVieGroupe1 - totaleforceGroupe2)} points`);
+      } else {
+        setResultat(`Groupe 1 Gagnant avec ${totaleVieGroupe1 - totaleforceGroupe2} points`);
+      }
     }
   };
 
