@@ -23,4 +23,6 @@ services:
     hostname: front
     ports:
       - "80:80"
+      depends_on:
+      - back
 
